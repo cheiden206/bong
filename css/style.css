@@ -14,55 +14,110 @@
 
 /* 📱 DÀNH CHO MÀN HÌNH ĐIỆN THOẠI (Dưới 768px) */
 @media (max-width: 768px) {
-    /* Thu nhỏ font chung */
-    body {
-        font-size: 14px;
-    }
 
-    /* Thu nhỏ tiêu đề */
-    .section-title {
-        font-size: 1.2rem;
-        text-align: center;
-    }
-
-    /* Thu nhỏ nút chuyển Tab */
-    .tab-btn {
-        padding: 8px 12px;
-        font-size: 0.85rem;
-    }
-
-    /* Giảm khoảng cách trong các ô của bảng */
-    .ranking-table th, 
-    .ranking-table td {
-        padding: 6px 4px;
-        font-size: 13px;
-    }
-
-    /* Thu nhỏ kích thước cờ quốc gia */
-    .team-icon {
-        width: 20px;
-        height: auto;
-        vertical-align: middle;
-    }
+    /* --- PHẦN 1: DỌN DẸP LỖI MÀN HÌNH CHUNG (Mạnh mẽ hơn) --- */
     * {
         box-sizing: border-box !important;
+        /* Ép mọi thứ không được rộng hơn màn hình, trừ header */
+        max-width: 100vw !important;
     }
     
     html, body {
         width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important; /* Triệt tiêu khoảng trắng dư bên phải */
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* --- PHẦN 2: SỬA THANH HEADER/MENU VỠ --- */
+    /* Khung nền tối Header */
+    header, .header-container {
+        width: 100vw !important; /* Ép tràn viền màn hình điện thoại */
+        min-width: 100vw !important;
+        background-color: #1a1d28; /* Giữ màu nền header cũ của bạn */
+        padding: 10px 5px !important; /* Giảm padding */
+        display: flex !important;
+        flex-direction: column !important; /* Xếp dọc Logo trên, Menu dưới */
+        align-items: center !important;
+    }
+
+    /* Phần chữ World Cup 2026 */
+    .header-logo-text {
+        text-align: center !important;
+        font-size: 1.1rem !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* Phần chứa các nút Tab/Link */
+    .tab-btn-container, .nav-links, .menu {
+        display: flex !important;
+        flex-wrap: wrap !important; /* Tự động xuống dòng các nút khi thiếu chỗ */
+        justify-content: center !important; /* Căn giữa các nút menu */
+        gap: 8px !important; /* Giảm khoảng cách giữa các nút */
+        width: 100% !important;
+        margin-top: 5px !important;
+    }
+
+    /* Các nút cụ thể (Tin tức, Đội hình...) */
+    .tab-btn, .nav-links a, .menu a {
+        padding: 8px 10px !important; /* Giảm padding nút */
+        font-size: 13px !important;
+        border-radius: 4px !important;
+        width: auto !important; /* Không cố định chiều rộng nút */
+    }
+    
+    /* Nút Home màu đỏ đang active */
+    .tab-btn.active, .tab-btn[href="#home"] {
+        padding: 8px 12px !important; /* Giữ padding to hơn một chút cho nút chính */
+        font-size: 13px !important;
+    }
+
+    /* --- PHẦN 3: SỬA KHỐI TIN TỨC MÓP VÀ CHÈN --- */
+    /* Khung chứa các bài viết tin tức */
+    .section-content.tab-content {
+        display: flex !important;
+        flex-direction: column !important; /* Xếp dọc các bài viết */
+        width: 100% !important;
+        padding: 0 10px !important; /* Thêm khoảng lề nhỏ cho tin tức */
+        margin-top: 15px !important;
+    }
+
+    /* Từng bài viết (Sửa selector cho chính xác hơn) */
+    .article-card, .news-item {
+        width: 100% !important;
         max-width: 100% !important;
-        overflow-x: hidden !important;
+        display: flex !important;
+        flex-direction: column !important; /* Xếp dọc ảnh trên, chữ dưới */
+        margin-bottom: 25px !important;
+        align-items: center !important;
+        text-align: left !important;
     }
 
-    header, .navbar {
+    /* Ảnh tin tức (Sửa lỗi móp ảnh) */
+    .article-card img, .news-item img {
         width: 100% !important;
-        padding: 10px !important;
+        height: auto !important; /* Giữ tỷ lệ ảnh, không bị móp */
+        max-height: 250px !important; /* Giới hạn chiều cao ảnh */
+        border-radius: 8px !important;
+        object-fit: cover !important; /* Đảm bảo ảnh tràn đầy khung */
+        margin-bottom: 10px !important;
     }
-
-    .news-item, .card {
+    
+    /* Khối chữ tin tức (Sửa lỗi bị chèn) */
+    .article-info, .news-item .text-content {
         width: 100% !important;
+        padding: 0 5px !important;
         display: flex !important;
         flex-direction: column !important;
+    }
+    
+    /* Giảm font chữ nội dung bài */
+    .article-description, .news-item p {
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+        width: 100% !important;
+        text-align: left !important;
     }
 }
 
