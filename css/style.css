@@ -1,3 +1,51 @@
+/* Khung chứa bảng: Tự động hiện thanh cuộn ngang khi màn hình quá nhỏ */
+.ranking-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Giúp vuốt mượt hơn trên iPhone */
+}
+
+/* Giữ độ rộng tối thiểu để chữ trong bảng không bị ép biến dạng */
+.ranking-table {
+    width: 100%;
+    min-width: 480px; /* Giữ bảng rộng tối thiểu 480px, nhỏ hơn sẽ cho cuộn ngang */
+    border-collapse: collapse;
+}
+
+/* 📱 DÀNH CHO MÀN HÌNH ĐIỆN THOẠI (Dưới 768px) */
+@media (max-width: 768px) {
+    /* Thu nhỏ font chung */
+    body {
+        font-size: 14px;
+    }
+
+    /* Thu nhỏ tiêu đề */
+    .section-title {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    /* Thu nhỏ nút chuyển Tab */
+    .tab-btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    /* Giảm khoảng cách trong các ô của bảng */
+    .ranking-table th, 
+    .ranking-table td {
+        padding: 6px 4px;
+        font-size: 13px;
+    }
+
+    /* Thu nhỏ kích thước cờ quốc gia */
+    .team-icon {
+        width: 20px;
+        height: auto;
+        vertical-align: middle;
+    }
+}
+
 /* Cấu hình cơ bản */
 * {
     margin: 0;
