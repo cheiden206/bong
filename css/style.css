@@ -288,140 +288,168 @@ header, nav {
 /* =========================================================
    --- 3. DÀNH CHO ĐIỆN THOẠI DĐ (MOBILE: Dưới 768px) --- 
    ========================================================= */
+/* =========================================================
+   --- GIAO DIỆN ĐIỆN THOẠI (DƯỚI 768px) - TỐI ƯU GỌN GÀNG --- 
+   ========================================================= */
 @media (max-width: 768px) {
 
-    /* --- Cấu hình chung chống vỡ giao diện --- */
-    html, body {
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    /* --- Header & Nút Hamburger Menu --- */
+    /* --- 1. THANH HEADER MÀU ĐỎ NỔI BẬT (GIỐNG HÌNH MẪU) --- */
     header, nav {
-        padding: 12px 15px;
-        flex-wrap: wrap;
+        background-color: #c8102e !important; /* Màu nền đỏ tươi chuẩn như ảnh */
+        padding: 12px 16px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        position: relative;
+        z-index: 1000;
+        width: 100% !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
 
+    /* Logo chữ trắng nổi trên nền đỏ */
     .logo a, .header-logo-text {
-        font-size: 20px;
+        color: #ffffff !important;
+        font-size: 18px !important;
+        font-weight: bold !important;
+        text-transform: uppercase;
     }
 
-    /* Hiển thị nút Hamburger 3 gạch */
+    /* Nút Hamburger 3 gạch trắng bên phải */
     .menu-toggle {
-        display: flex;
-    }
-
-    /* Menu xổ xuống khi ấn vào nút */
-    .menu, .nav-links, .tab-btn-container {
-        display: none; /* Mặc định ẩn trên điện thoại */
+        display: flex !important;
         flex-direction: column;
-        width: 100%;
-        margin-top: 15px;
-        background-color: #11111b;
-        padding: 10px;
-        border-radius: 8px;
-        gap: 8px;
+        justify-content: space-between;
+        width: 26px;
+        height: 18px;
+        background: transparent !important;
+        border: none !important;
+        cursor: pointer;
+        padding: 0;
     }
 
-    /* Khi kích hoạt Javascript thêm class active */
+    .menu-toggle span {
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: #ffffff !important; /* 3 gạch ngang màu trắng */
+        border-radius: 2px;
+    }
+
+    /* Danh sách Menu khi bấm vào nút mới hiện ra */
+    .menu, .nav-links, .tab-btn-container {
+        display: none; /* Mặc định ẩn menu */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #a30c25 !important; /* Màu đỏ đậm hơn chút cho menu thả xuống */
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+
+    /* Khi bấm vào 3 gạch (thêm class active) sẽ xòe menu ra */
     .menu.active, .nav-links.active, .tab-btn-container.active {
         display: flex !important;
     }
 
     .menu li, .nav-links a, .tab-btn {
-        width: 100%;
-        text-align: center;
+        width: 100% !important;
+        margin: 0 !important;
     }
 
     .menu li a, .nav-links a, .tab-btn {
-        padding: 10px;
-        font-size: 15px;
-        display: block;
-        background: rgba(255, 255, 255, 0.05);
+        display: block !important;
+        color: #ffffff !important;
+        padding: 12px 20px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 0 !important;
+        text-align: left !important;
+        font-size: 14px !important;
+        background: transparent !important;
     }
 
-    /* --- Nội dung chính --- */
+    .menu li a:hover, .tab-btn:hover, .tab-btn.active {
+        background-color: rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* --- 2. KHỐI TIN TỨC LÀM SIÊU GỌN (DẠNG HÀNG NGANG) --- */
+    .news-container {
+        width: 100% !important;
+        padding: 0 10px !important;
+        gap: 10px !important;
+    }
+
+    /* Card tin tức thu nhỏ: Ảnh bên trái - Chữ bên phải */
+    .news-card, .article-card, .news-item {
+        display: flex !important;
+        flex-direction: row !important; /* Ép về hàng ngang */
+        align-items: center !important;
+        padding: 8px 10px !important;
+        gap: 12px !important;
+        background: #ffffff !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.06) !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* Khung chứa ảnh thu nhỏ */
+    .news-image, .news-card img, .article-card img, .news-item img {
+        width: 90px !important;
+        height: 65px !important;
+        min-width: 90px !important;
+        max-height: 65px !important;
+        border-radius: 6px !important;
+        object-fit: cover !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Khối thông tin tin tức */
+    .news-content, .article-info {
+        flex: 1 !important;
+        width: auto !important;
+        padding: 0 !important;
+        display: flex !direction: column !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+    }
+
+    /* Tiêu đề bài viết gọn gàng, tối đa 2 dòng */
+    .news-content h3, .article-card h3 {
+        font-size: 14px !important;
+        font-weight: bold !important;
+        line-height: 1.3 !important;
+        color: #111111 !important;
+        margin-bottom: 4px !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important; /* Giới hạn tối đa 2 dòng tiêu đề */
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+
+    /* Mô tả ngắn: Tối đa 1 dòng */
+    .news-content p, .article-description {
+        font-size: 12px !important;
+        line-height: 1.3 !important;
+        color: #666666 !important;
+        margin: 0 !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 1 !important; /* Ẩn bớt đoạn văn dài, giữ lại 1 dòng */
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+
+    /* --- 3. TỐI ƯU CÁC PHẦN KHÁC TRÊN MOBILE --- */
     #content {
-        width: 95%;
-        margin: 15px auto;
-        padding: 12px;
+        padding: 10px !important;
+        margin: 10px auto !important;
+        border-radius: 8px !important;
     }
 
-    /* Tin tức: Chuyển sang hàng dọc (Ảnh trên - Chữ dưới) */
-    .news-card {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .news-image {
-        width: 100%;
-    }
-
-    .news-image img {
-        width: 100%;
-        height: 180px;
-    }
-
-    .news-content h3 {
-        font-size: 18px;
-    }
-
-    /* Lưới cầu thủ & Đội bóng trên Điện thoại */
-    .player-cards-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .teams-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    /* Trang chi tiết cầu thủ */
-    .player-main-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-        gap: 15px;
-    }
-
-    .player-details-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .profile-club-tag {
-        justify-content: center;
-    }
-
-    /* Trang Liên Hệ */
-    .contact-container {
-        flex-direction: column;
-    }
-
-    .contact-info, .contact-form {
-        width: 100%;
-        min-width: 100%;
-        padding: 20px;
-    }
-
-    /* Bài viết chi tiết */
-    .article {
-        width: 100%;
-        padding: 15px;
-    }
-
-    .article h1 {
-        font-size: 24px;
-    }
-
-    .article p {
-        font-size: 16px;
-    }
-
-    /* Footer */
-    .footer-top {
-        flex-direction: column;
-        padding: 30px 15px;
+    .banner img {
+        border-radius: 8px !important;
     }
 }
 
