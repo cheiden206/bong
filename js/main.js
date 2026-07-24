@@ -93,3 +93,10 @@ window.switchPhanTichTab = function(evt, tabId) {
         evt.currentTarget.classList.add("active");
     }
 };
+
+const menuBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('nav-menu');
+
+    menuBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
