@@ -1,0 +1,68 @@
+<section class="player-profile-page">
+    <!-- Nút quay lại trang đội hình trước đó -->
+    <div class="back-nav">
+        <button onclick="loadPage('chitietdoihinh', currentSelectedTeamId)" class="btn-back">
+            ← Quay lại đội hình
+        </button>
+    </div>
+
+    <!-- Khung thông tin chính (Header Profile) -->
+    <div class="player-main-card">
+        <div class="profile-avatar-wrapper">
+            <img id="player-profile-img" src="img/default-player.png" alt="Cầu thủ">
+            <div id="player-profile-number" class="profile-number">0</div>
+        </div>
+        
+        <div class="profile-main-info">
+            <h2 id="player-profile-name">Tên Cầu Thủ</h2>
+            <p id="player-profile-position" class="profile-pos">Vị trí: Đang cập nhật</p>
+            <div class="profile-club-tag">
+                <img id="player-profile-team-logo" src="" alt="Cờ" class="mini-flag">
+                <span id="player-profile-club">Câu lạc bộ</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Khung thông tin tiểu sử & Chỉ số cơ bản -->
+    <div class="player-details-grid">
+        <!-- Khối tiểu sử -->
+        <div class="info-block-card">
+            <div class="block-title">
+                <span class="decor-bar-blue"></span>
+                <h3>Thông tin cá nhân</h3>
+            </div>
+            <div class="bio-list">
+                <div class="bio-row"><span class="label">Quốc tịch:</span><span id="p-bio-nation" class="val">-</span></div>
+                <div class="bio-row"><span class="label">Ngày sinh:</span><span id="p-bio-dob" class="val">-</span></div>
+                <div class="bio-row"><span class="label">Chiều cao:</span><span id="p-bio-height" class="val">-</span></div>
+                <div class="bio-row"><span class="label">Cân nặng:</span><span id="p-bio-weight" class="val">-</span></div>
+            </div>
+        </div>
+
+        <!-- Khối chỉ số phong độ mùa giải -->
+        <div class="info-block-card">
+            <div class="block-title">
+                <span class="decor-bar-green"></span>
+                <h3>Chỉ số mùa giải 2026</h3>
+            </div>
+            <div class="stats-counter-grid">
+                <div class="stat-box">
+                    <span class="stat-num" id="p-stat-match">0</span>
+                    <span class="stat-lbl">Trận đấu</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num" id="p-stat-goals">0</span>
+                    <span class="stat-lbl">Bàn thắng</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num" id="p-stat-assists">0</span>
+                    <span class="stat-lbl">Kiến tạo</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-num" id="p-stat-cards">0/0</span>
+                    <span class="stat-lbl">Vàng / Đỏ</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

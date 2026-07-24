@@ -1,0 +1,460 @@
+<style>
+    /* =========================================
+       CSS CHO THANH MENU TAB (Giống ảnh mẫu)
+       ========================================= */
+    .tab-menu-container {
+        background-color: #e8eaf6; /* Màu nền xanh nhạt giống ảnh */
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
+
+    .tab-btn {
+        background: none;
+        border: none;
+        padding: 15px 25px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #555;
+        cursor: pointer;
+        text-transform: uppercase;
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .tab-btn:hover {
+        color: #d32f2f; /* Hover đổi màu đỏ */
+    }
+
+    .tab-btn.active {
+        color: #d32f2f; /* Chữ đỏ khi kích hoạt */
+        border-bottom: 3px solid #ffcc00; /* Vạch vàng dưới chân */
+    }
+
+    /* Hiệu ứng chuyển đổi nội dung */
+    .tab-content {
+        display: none;
+        animation: fadeEffect 0.4s;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    @keyframes fadeEffect {
+        from {opacity: 0; transform: translateY(10px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* =========================================
+       CSS CHO NỘI DUNG (BẢNG XẾP HẠNG & VIDEO)
+       ========================================= */
+    .analysis-page {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px 20px 20px;
+        font-family: Arial, sans-serif;
+    }
+
+    .section-title {
+        border-left: 4px solid #d32f2f;
+        padding-left: 10px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        color: #d32f2f;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    /* Bảng xếp hạng */
+    .ranking-container {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        overflow-x: auto;
+    }
+
+    .ranking-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 600px;
+    }
+
+    .ranking-table th {
+        background-color: #1a1a2e;
+        color: #fff;
+        padding: 12px 15px;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .ranking-table th:nth-child(2) {
+        text-align: left;
+    }
+
+    .ranking-table td {
+        padding: 12px 15px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .ranking-table td:nth-child(2) {
+        text-align: left;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .ranking-table tbody tr:hover { background-color: #f8f9fa; }
+    .team-icon { width: 25px; height: auto; border-radius: 2px; }
+    .ranking-table tbody tr:nth-child(1) td,
+    .ranking-table tbody tr:nth-child(2) td {
+        background-color: rgba(233, 69, 96, 0.05);
+    }
+
+    /* Danh sách Video */
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+    }
+
+    .video-card {
+        background: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease;
+    }
+
+    .video-card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+    
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* Tỷ lệ 16:9 */
+        height: 0;
+        overflow: hidden;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        border: none;
+    }
+
+    .video-thumb-link {
+        position: relative;
+        display: block;
+        width: 100%;
+        padding-top: 56.25%; /* Tỷ lệ 16:9 */
+        overflow: hidden;
+        background-color: #000;
+    }
+
+    .video-poster {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .video-thumb-link:hover .video-poster {
+        transform: scale(1.05);
+    }
+
+    .play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        background-color: rgba(211, 47, 47, 0.9);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        transition: background-color 0.3s ease;
+    }
+
+    .video-thumb-link:hover .play-btn {
+        background-color: #ff0000;
+    }
+
+    .video-info { padding: 15px; }
+    .video-info h4 { margin: 0 0 10px 0; font-size: 16px; color: #1a1a2e; line-height: 1.4; }
+    .video-info p { margin: 0; font-size: 13px; color: #666; }
+
+
+</style>
+
+<!-- THANH MENU TAB -->
+<div class="tab-menu-container">
+    <button class="tab-btn active" onclick="switchPhanTichTab(event, 'tab-xephang')">Xếp Hạng</button>
+    <button class="tab-btn" onclick="switchPhanTichTab(event, 'tab-video')">Phân Tích</button>
+</div>
+
+<div class="analysis-page">
+    
+    <!-- TAB 1: BẢNG XẾP HẠNG -->
+    <div id="tab-xephang" class="tab-content active">
+        <h2 class="section-title">Bảng Xếp Hạng - Bảng A</h2>
+        <div class="ranking-container">
+            <table class="ranking-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Đội Tuyển</th>
+                        <th>Trận</th>
+                        <th>T</th>
+                        <th>H</th>
+                        <th>B</th>
+                        <th>BT</th>
+                        <th>BB</th>
+                        <th>HS</th>
+                        <th>Điểm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><img src="https://flagcdn.com/w40/mx.png" class="team-icon" alt="Mexico"> Mexico</td>
+                        <td>3</td><td>2</td><td>1</td><td>0</td><td>5</td><td>2</td><td>+3</td><td><strong>7</strong></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><img src="https://flagcdn.com/w40/us.png" class="team-icon" alt="Mỹ"> Mỹ</td>
+                        <td>3</td><td>1</td><td>2</td><td>0</td><td>3</td><td>2</td><td>+1</td><td><strong>5</strong></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><img src="https://flagcdn.com/w40/ca.png" class="team-icon" alt="Canada"> Canada</td>
+                        <td>3</td><td>1</td><td>1</td><td>1</td><td>4</td><td>4</td><td>0</td><td><strong>4</strong></td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><img src="https://flagcdn.com/w40/ht.png" class="team-icon" alt="Haiti"> Haiti</td>
+                        <td>3</td><td>0</td><td>0</td><td>3</td><td>1</td><td>5</td><td>-4</td><td><strong>0</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TAB: BẢNG XẾP HẠNG - BẢNG B -->
+<div id="tab-xephang-b" class="tab-content active">
+    <h2 class="section-title">Bảng Xếp Hạng - Bảng B</h2>
+    <div class="ranking-container">
+        <table class="ranking-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Đội Tuyển</th>
+                    <th>Trận</th>
+                    <th>T</th>
+                    <th>H</th>
+                    <th>B</th>
+                    <th>BT</th>
+                    <th>BB</th>
+                    <th>HS</th>
+                    <th>Điểm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><img src="https://flagcdn.com/w40/za.png" class="team-icon" alt="nam-phi"> Nam Phi</td>
+                    <td>3</td><td>2</td><td>1</td><td>0</td><td>6</td><td>2</td><td>+4</td><td><strong>7</strong></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><img src="https://flagcdn.com/w40/py.png" class="team-icon" alt="Paraguay"> Paraguay</td>
+                    <td>3</td><td>2</td><td>0</td><td>1</td><td>4</td><td>3</td><td>+1</td><td><strong>6</strong></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><img src="https://flagcdn.com/w40/jm.png" class="team-icon" alt="Jamaica"> Jamaica</td>
+                    <td>3</td><td>1</td><td>0</td><td>2</td><td>3</td><td>4</td><td>-1</td><td><strong>3</strong></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><img src="https://flagcdn.com/w40/hn.png" class="team-icon" alt="Honduras"> Honduras</td>
+                    <td>3</td><td>0</td><td>1</td><td>2</td><td>1</td><td>5</td><td>-4</td><td><strong>1</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="tab-xephang-b" class="tab-content active">
+    <h2 class="section-title">Bảng Xếp Hạng - Bảng B</h2>
+    <div class="ranking-container">
+        <table class="ranking-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Đội Tuyển</th>
+                    <th>Trận</th>
+                    <th>T</th>
+                    <th>H</th>
+                    <th>B</th>
+                    <th>BT</th>
+                    <th>BB</th>
+                    <th>HS</th>
+                    <th>Điểm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><img src="https://flagcdn.com/w40/qa.png" class="team-icon" alt="Quatar"> Quatar</td>
+                    <td>3</td><td>2</td><td>1</td><td>0</td><td>6</td><td>2</td><td>+4</td><td><strong>7</strong></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><img src="https://flagcdn.com/w40/ch.png" class="team-icon" alt="Thụy Sĩ"> Thụy Sĩ  </td>
+                    <td>3</td><td>2</td><td>0</td><td>1</td><td>4</td><td>3</td><td>+1</td><td><strong>6</strong></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><img src="https://flagcdn.com/w40/br.png" class="team-icon" alt="Brazil"> Brazil</td>
+                    <td>3</td><td>1</td><td>0</td><td>2</td><td>3</td><td>4</td><td>-1</td><td><strong>3</strong></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="tab-xephang-b" class="tab-content active">
+    <h2 class="section-title">Bảng Xếp Hạng - Bảng B</h2>
+    <div class="ranking-container">
+        <table class="ranking-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Đội Tuyển</th>
+                    <th>Trận</th>
+                    <th>T</th>
+                    <th>H</th>
+                    <th>B</th>
+                    <th>BT</th>
+                    <th>BB</th>
+                    <th>HS</th>
+                    <th>Điểm</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><img src="https://flagcdn.com/w40/ma.png" class="team-icon" alt="Morocco"> Morocco</td>
+                    <td>3</td><td>2</td><td>1</td><td>0</td><td>6</td><td>2</td><td>+4</td><td><strong>7</strong></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><img src="https://flagcdn.com/w40/au.png" class="team-icon" alt="Australia"> Australia</td>
+                    <td>3</td><td>2</td><td>0</td><td>1</td><td>4</td><td>3</td><td>+1</td><td><strong>6</strong></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><img src="https://flagcdn.com/w40/tr.png" class="team-icon" alt="Thổ Nhĩ Kỳ"> Thổ Nhĩ Kỳ</td>
+                    <td>3</td><td>1</td><td>0</td><td>2</td><td>3</td><td>4</td><td>-1</td><td><strong>3</strong></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    
+    </div>
+
+<div id="tab-video" class="tab-content">
+    <h2 class="section-title">Video Phân Tích Mới Nhất</h2>
+    <div class="video-grid">
+        
+        <!-- CARD VIDEO 1 -->
+        <div class="video-card">
+            <a href="https://www.youtube.com/watch?v=S3sHcyAl-2k" target="_blank" class="video-thumb-link">
+                <img src="https://img.youtube.com/vi/S3sHcyAl-2k/hqdefault.jpg" alt="Thumbnail" class="video-poster">
+                <div class="play-btn">▶</div>
+            </a>
+            <div class="video-info">
+                <h4>HIGHLIGHT CHUNG KẾT FIFA World Cup™: TÂY BAN NHA vs ARGENTINA</h4>
+                <p>Xem lại diễn biến kịch tính và bàn thắng vàng quyết định trận chung kết.</p>
+            </div>
+        </div>
+
+        <!-- CARD VIDEO 2 -->
+        <div class="video-card">
+            <a href="https://www.youtube.com/embed/kWfZaamKgz0?si=x8kZlYFUpWQwX7T1" target="_blank" class="video-thumb-link">
+                <img src="https://img.youtube.com/vi/kWfZaamKgz0/hqdefault.jpg" alt="Thumbnail" class="video-poster">
+                <div class="play-btn">▶</div>
+            </a>
+            <div class="video-info">
+                <h4>Mbappe wins second World Cup Golden Boot, Spain sweeps individual awards</h4>
+                <p>Kylian Mbappe became the first player to win the Golden Boot twice..</p>
+            </div>
+        </div>
+
+        <!-- CARD VIDEO 3 -->
+        <div class="video-card">
+            <a href="https://www.youtube.com/embed/863PqmXd4Mk?si=y2DqDSm8vwBXtr7S" target="_blank" class="video-thumb-link">
+                <img src="https://img.youtube.com/vi/863PqmXd4Mk/hqdefault.jpg" alt="Thumbnail" class="video-poster">
+                <div class="play-btn">▶</div>
+            </a>
+            <div class="video-info">
+                <h4>FULL LỄ TRAO GIẢI FIFA WORLD CUP 2026™ | Ngày 20/7/2026</h4>
+                <p>Đội tuyển Tây Ban Nha đã lên ngôi vô địch World Cup 2026 hoàn toàn xứng đáng, đồng thời thâu tóm gần hết các danh hiệu cá nhân của giải đấu. </p>
+            </div>
+        </div>
+
+        <!-- CARD VIDEO 4 -->
+        <div class="video-card">
+            <a href="https://youtu.be/qJi7Ql6Ry6g?si=DtkRJtGRBr9yPtCn" target="_blank" class="video-thumb-link">
+                <img src="https://img.youtube.com/vi/qJi7Ql6Ry6g/hqdefault.jpg" alt="Thumbnail" class="video-poster">
+                <div class="play-btn">▶</div>
+            </a>
+            <div class="video-info">
+                <h4>HIGHLIGHT FIFA WORLD CUP 2026™ | TRANH HẠNG BA ĐT Pháp vs ĐT Anh | ĐẠI TIỆC BÀN THẮNG</h4>
+                <p>ĐT Anh giành hạng ba sau trận thắng khó tin trước ĐT Pháp với tỷ số 6-4. Đây là trận đấu mà đôi bên đã sẵn sàng tấn công, không có nhiều tính toán phòng ngự. Vì thế, trận đấu đã diễn ra rất mãn nhãn. </p>
+            </div>
+        </div>
+
+        <!-- CARD VIDEO 5 -->
+        <div class="video-card">
+            <a href="https://youtu.be/42ovN5rW79U?si=23d7-_IxtiN18_8r" target="_blank" class="video-thumb-link">
+                <img src="https://img.youtube.com/vi/42ovN5rW79U/hqdefault.jpg" alt="Thumbnail" class="video-poster">
+                <div class="play-btn">▶</div>
+            </a>
+            <div class="video-info">
+                <h4>Highlights | Brazil 1-2 Norway | FIFA World Cup 2026™</h4>
+                <p>Watch all the highlights from Norway's 2-1 win over Brazil with goals from Erling Haaland and Neymar Jr, in their Round of 16 match at the 2026 FIFA World Cup.</p>
+            </div>
+        </div>
+
+        <!-- CARD VIDEO 6 -->
+        <div class="video-card">
+            <a href="https://youtu.be/a2KJCbM1kUc?si=r7mjmJxRT-UDFx_w" target="_blank" class="video-thumb-link">
+                <img src="https://img.youtube.com/vi/a2KJCbM1kUc/hqdefault.jpg" alt="Thumbnail" class="video-poster">
+                <div class="play-btn">▶</div>
+            </a>
+            <div class="video-info">
+                <h4>HIGHLIGHTS | Bồ Đào Nha vs Tây Ban Nha | 90 phút cân não | Vòng 16 đội FIFA World Cup 2026™</h4>
+                <p>Không phụ kỳ vọng của người hâm mộ, Bồ Đào Nha và Tây Ban Nha cống hiến một trận đấu căng thẳng từ đầu đến cuối. Chỉ một khoảnh khắc khác biệt ở những phút bù giờ đã đủ để phân định thắng bại.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+

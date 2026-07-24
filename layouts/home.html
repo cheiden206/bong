@@ -1,0 +1,246 @@
+<!-- 1. BANNER CHÍNH -->
+<div class="banner">
+    <img src="img/bghome.jpg" alt="World Cup 2026">
+</div>
+
+<!-- 2. PHẦN TIN TỨC MỚI NHẤT (GIỮ NGUYÊN HOÀN TOÀN TỪ CODE CỦA BẠN) -->
+<section class="news">
+    <div class="title">
+        <h2>TIN MỚI NHẤT</h2>
+    </div>
+
+    <div class="news-container">
+        <!-- Tham số thứ 2 là ID bài viết để gọi loadNews() -->
+        <a href="#" class="news-card" onclick="loadPage('chitiettintuc', 1);return false;">
+            <div class="news-image">
+                <img src="img/nauy1.webp" alt="Na Uy">
+            </div>
+            <div class="news-content">
+                <h3>Na Uy trở lại World Cup sau 28 năm</h3>
+                <p>Chờ đợi 28 năm, Na Uy trở lại World Cup cùng một Haaland quá khác biệt.</p>
+            </div>
+        </a>
+
+        <a href="#" class="news-card" onclick="loadPage('chitiettintuc', 2);return false;">
+            <div class="news-image">
+                <img src="img/tintuchome1.jpg" alt="Đội hình">
+            </div>
+            <div class="news-content">
+                <h3>Kết thúc của những huyền thoại cũ, mở ra thời đại mới</h3>
+                <p>Chương cuối của những huyền thoại, chương đầu của những biểu tượng mới</p>
+            </div>
+        </a>
+
+        <a href="#" class="news-card" onclick="loadPage('lichthidau');return false;">
+            <div class="news-image">
+                <img src="img/LichThiDauTuKet.jpg" alt="Lịch thi đấu">
+            </div>
+            <div class="news-content">
+                <h3>Lịch thi đấu mới nhất</h3>
+                <p>Cập nhật đầy đủ lịch thi đấu và thời gian diễn ra các trận đấu.</p>
+            </div>
+        </a>
+    </div>
+</section>
+
+<!-- 3. SECTION ĐIỀU HƯỚNG TRANG (ĐÃ THU NHỎ GỌN GÀNG HƠN) -->
+<section class="nav-section">
+    <div class="container">
+
+        <!-- THẺ 1: PHÂN TÍCH & BẢNG XẾP HẠNG (Ảnh Trái - Chữ Phải) -->
+        <div class="nav-card">
+            <div class="nav-card-img">
+                <img src="https://img.youtube.com/vi/S3sHcyAl-2k/hqdefault.jpg" alt="Phân Tích Bảng Xếp Hạng">
+            </div>
+            <div class="nav-card-body">
+                <h2 class="card-title">PHÂN TÍCH & BẢNG XẾP HẠNG</h2>
+                <p class="card-desc">Cập nhật chi tiết thứ hạng, phong độ và các con số thống kê chuyên sâu của các đội tuyển tại giải đấu.</p>
+                <button class="btn-more" onclick="loadPage('phantich'); return false;">Xem thêm</button>
+            </div>
+        </div>
+
+        <!-- THẺ 2: ĐỘI HÌNH & CẦU THỦ (Chữ Trái - Ảnh Phải) -->
+        <div class="nav-card reverse">
+            <div class="nav-card-body">
+                <h2 class="card-title">ĐỘI HÌNH</h2>
+                <p class="card-desc">Khám phá đội hình thi đấu, sơ đồ chiến thuật và danh sách các ngôi sao hàng đầu mùa giải mới.</p>
+                <button class="btn-more" onclick="loadPage('doihinh'); return false;">Xem thêm</button>
+            </div>
+            <div class="nav-card-img">
+                <img src="img/tintuchome1.jpg" alt="Đội Hình">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- 4. SECTION NHÀ TÀI TRỢ (Ở CUỐI TRANG) -->
+<section class="sponsors-section">
+    <div class="container">
+        <div class="sponsor-title">
+            <h2>NHÀ TÀI TRỢ & ĐỐI TÁC</h2>
+        </div>
+        <div class="sponsors-grid">
+            <div class="sponsor-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas">
+            </div>
+            <div class="sponsor-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike">
+            </div>
+            <div class="sponsor-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg" alt="Coca Cola">
+            </div>
+            <div class="sponsor-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Visa_2021.svg" alt="Visa">
+            </div>
+            <div class="sponsor-item">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Hyundai_motor_company_logo.svg" alt="Hyundai">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= STYLES CSS (ĐÃ CÂN CHỈNH BÉ LẠI) ================= -->
+<style>
+    /* Khung chứa căn giữa trang */
+    .container {
+        max-width: 1000px; /* Thu hẹp chiều rộng khung từ 1100px xuống 1000px */
+        margin: 0 auto;
+        padding: 0 15px;
+    }
+
+    /* --- CSS SECTION ĐIỀU HƯỚNG BÉ LẠI --- */
+    .nav-section {
+        padding: 15px 0 20px 0;
+    }
+
+    .nav-card {
+        background-color: #f4f5f7;
+        border: 1px solid #e1e3e8;
+        border-radius: 16px;       /* Bo tròn nhẹ lại */
+        padding: 16px;              /* Giảm padding từ 24px xuống 16px */
+        margin-bottom: 20px;        /* Giảm khoảng cách giữa các thẻ từ 28px xuống 20px */
+        display: flex;
+        align-items: center;
+        gap: 20px;                  /* Giảm khoảng cách giữa ảnh và chữ từ 32px xuống 20px */
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .nav-card.reverse {
+        flex-direction: row;
+    }
+
+    .nav-card-img {
+        flex: 1;                    /* Giảm tỷ lệ rộng của ảnh */
+        max-width: 40%;             /* Chiều rộng ảnh giảm từ 50% xuống 40% */
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+    }
+
+    .nav-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 10px;
+    }
+
+    .nav-card-body {
+        flex: 1.2;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Tiêu đề bé lại */
+    .card-title {
+        color: #b71c1c;
+        font-size: 18px;            /* Giảm font từ 22px xuống 18px */
+        font-weight: 800;
+        margin: 0 0 8px 0;          /* Thu nhỏ margin */
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+    }
+
+    .card-desc {
+        color: #555555;
+        font-size: 13.5px;          /* Giảm font mô tả từ 15px xuống 13.5px */
+        line-height: 1.4;
+        margin: 0 0 14px 0;
+    }
+
+    /* Nút Xem thêm nhỏ gọn hơn */
+    .btn-more {
+        background-color: #b71c1c;
+        color: #ffffff;
+        border: none;
+        padding: 6px 18px;          /* Thu nhỏ nút */
+        font-size: 12px;            /* Chữ nút nhỏ hơn */
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn-more:hover {
+        background-color: #d32f2f;
+        transform: translateY(-1px);
+    }
+
+    /* --- CSS SECTION NHÀ TÀI TRỢ --- */
+    .sponsors-section {
+        margin: 25px 0 30px 0;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+    }
+
+    .sponsor-title h2 {
+        text-align: center;
+        color: #b71c1c;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+    }
+
+    .sponsors-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+
+    .sponsor-item img {
+        height: 32px;               /* Thu nhỏ bớt kích thước logo tài trợ */
+        filter: grayscale(100%);
+        opacity: 0.5;
+        transition: all 0.3s ease;
+    }
+
+    .sponsor-item img:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.08);
+    }
+
+    /* Responsive Mobile */
+    @media (max-width: 768px) {
+        .nav-card, .nav-card.reverse {
+            flex-direction: column !important;
+            padding: 14px;
+            gap: 12px;
+        }
+
+        .nav-card-img {
+            max-width: 100%;
+            width: 100%;
+        }
+
+        .card-title {
+            font-size: 16px;
+        }
+    }
+</style>

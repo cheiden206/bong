@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch Thi Đấu World Cup 2026</title>
+    <style>
+        :root {
+            --primary-color: #a30000; /* Màu đỏ thể thao đậm đà */
+            --bg-color: #f4f6f9;
+            --text-color: #333;
+            --border-color: #e5e5e5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        /* Header của trang lịch */
+        .header-schedule {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Cụm ngày thi đấu */
+        .date-group {
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .date-header {
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            font-weight: bold;
+            color: #555;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        /* Khung chứa các trận đấu trong ngày */
+        .match-list {
+            list-style: none;
+        }
+
+        .match-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.2s ease;
+        }
+
+        .match-item:last-child {
+            border-bottom: none;
+        }
+
+        .match-item:hover {
+            background-color: #fdfdfd;
+        }
+
+        /* Thời gian & Bảng đấu */
+        .match-info {
+            flex: 1;
+            min-width: 90px;
+        }
+
+        .match-time {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .match-group {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Khu vực hiển thị tỷ số / hai đội */
+        .match-vs {
+            flex: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .team {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 40%;
+        }
+
+        .team.home {
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        .team.away {
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .team-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .team-flag {
+            width: 30px;
+            height: 20px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            border-radius: 2px;
+        }
+
+        /* Tỷ số hoặc chữ VS */
+        .score-box {
+            background: #eee;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1rem;
+            min-width: 50px;
+            text-align: center;
+            color: #333;
+        }
+
+        .score-box.live {
+            background: #fff0f0;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        /* Kênh phát sóng công cụ tiện ích */
+        .match-tv {
+            flex: 1;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #0066cc;
+            font-weight: 500;
+        }
+
+        /* Responsive cho điện thoại di động */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .match-item {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+                padding: 15px;
+            }
+            .match-info {
+                text-align: center;
+                width: 100%;
+            }
+            .match-vs {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .team {
+                width: 42%;
+            }
+            .match-tv {
+                text-align: center;
+                width: 100%;
+                border-top: 1px dashed var(--border-color);
+                padding-top: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-schedule">Lịch thi đấu World Cup 2026</div>
+
+    <!-- Cụm Ngày thứ 1 -->
+    <div class="date-group">
+        <div class="date-header">Thứ Sáu, 12/06/2026</div>
+        <ul class="match-list">
+            <li class="match-item">
+                <div class="match-info">
+                    <div class="match-time">02:00</div>
+                    <div class="match-group">Bảng A</div>
+                </div>
+                <div class="match-vs">
+                    <div class="team home" onclick="localStorage.setItem('selectedTeam', 'Mexico'); loadPage('chitietdoihinh', 'mexico');" style="cursor: pointer;">
+                        <span class="team-name">Mexico</span>
+                        <img class="team-flag" src="https://flagcdn.com/w40/mx.png" alt="Mexico">
+                    </div>
+                    <div class="score-box">2 - 0</div>
+                    <div class="team away" onclick="localStorage.setItem('selectedTeam', 'Nam Phi'); loadPage('chitietdoihinh', 'nam-phi');" style="cursor: pointer;">
+                        <img class="team-flag" src="https://flagcdn.com/w40/za.png" alt="Nam Phi">
+                        <span class="team-name">Nam Phi</span>
+                    </div>
+                </div>
+                <div class="match-tv">VTV5, HTV Thể thao</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="date-group">
+    <div class="date-header">Thứ bảy, 13/06/2026</div>
+    <ul class="match-list">
+        
+        <!-- Trận 1 -->
+        <li class="match-item">
+            <div class="match-info">
+                <div class="match-time">02:00</div>
+                <div class="match-group">Bảng B</div>
+            </div>
+            <div class="match-vs">
+                <!-- Khi click vào đội sẽ lưu tên đội vào localStorage và gọi loadPage('doihinh') -->
+                <div class="team home" onclick="localStorage.setItem('selectedTeam', 'Canada'); loadPage('chitietdoihinh', 'canada');" style="cursor: pointer;">
+                    <span class="team-name">Canada</span>
+                    <img class="team-flag" src="https://flagcdn.com/w40/ca.png" alt="Canada">
+                </div>
+                <div class="score-box">1 - 1</div>
+                <div class="team away" onclick="localStorage.setItem('selectedTeam', 'Bosnia & Herz'); loadPage('chitietdoihinh', 'bosnia-herzegovina');" style="cursor: pointer;">
+                    <img class="team-flag" src="https://flagcdn.com/w40/ba.png" alt="Bosnia & Herz">
+                    <span class="team-name">Bosnia & Herz</span>
+                </div>
+            </div>
+            <div class="match-tv">VTV5, HTV Thể thao</div>
+        </li>
+
+        <!-- Trận 2 -->
+        <li class="match-item">
+            <div class="match-info">
+                <div class="match-time">02:00</div>
+                <div class="match-group">Bảng D</div>
+            </div>
+            <div class="match-vs">
+                <!-- Khi click vào đội sẽ lưu tên đội vào localStorage và gọi loadPage('doihinh') -->
+                <div class="team home" onclick="localStorage.setItem('selectedTeam', 'Mỹ'); loadPage('chitietdoihinh', 'my');" style="cursor: pointer;">
+                    <span class="team-name">Mỹ</span>
+                    <img class="team-flag" src="https://flagcdn.com/w40/us.png" alt="Mỹ">
+                </div>
+                <div class="score-box">4 - 1</div>
+                <div class="team away" onclick="localStorage.setItem('selectedTeam', 'Paraguay'); loadPage('chitietdoihinh', 'paraguay');" style="cursor: pointer;">
+                    <img class="team-flag" src="https://flagcdn.com/w40/py.png" alt="Paraguay">
+                    <span class="team-name">Paraguay</span>
+                </div>
+            </div>
+            <div class="match-tv">VTV5, HTV Thể thao</div>
+        </li>
+</div>
+
+    <!-- Cụm Ngày thứ 3 -->
+<div class="date-group">
+    <div class="date-header">CN, 14/06/2026</div>
+    <ul class="match-list">
+        
+        <!-- Trận 1 -->
+        <li class="match-item">
+            <div class="match-info">
+                <div class="match-time">02:00</div>
+                <div class="match-group">Bảng B</div>
+            </div>
+            <div class="match-vs">
+                <!-- Khi click vào đội sẽ lưu tên đội vào localStorage và gọi loadPage('doihinh') -->
+                <div class="team home" onclick="localStorage.setItem('selectedTeam', 'Qatar'); loadPage('chitietdoihinh', 'qatar');" style="cursor: pointer;">
+                    <span class="team-name">Qatar</span>
+                    <img class="team-flag" src="https://flagcdn.com/w40/qa.png" alt="Qatar">
+                </div>
+                <div class="score-box">1 - 1</div>
+                <div class="team away" onclick="localStorage.setItem('selectedTeam', 'Thụy Sĩ'); loadPage('chitietdoihinh', 'thuy-si');" style="cursor: pointer;">
+                    <img class="team-flag" src="https://flagcdn.com/w40/ch.png" alt="Thụy Sĩ">
+                    <span class="team-name">Thụy Sĩ</span>
+                </div>
+            </div>
+            <div class="match-tv">VTV5, HTV Thể thao</div>
+        </li>
+
+        <!-- Trận 2 -->
+        <li class="match-item">
+            <div class="match-info">
+                <div class="match-time">05:00</div>
+                <div class="match-group">Bảng C</div>
+            </div>
+            <div class="match-vs">
+                <!-- Khi click vào đội sẽ lưu tên đội vào localStorage và gọi loadPage('doihinh') -->
+                <div class="team home" onclick="localStorage.setItem('selectedTeam', 'Brazil'); loadPage('doihinh');" style="cursor: pointer;">
+                    <span class="team-name">Brazil</span>
+                    <img class="team-flag" src="https://flagcdn.com/w40/br.png" alt="Brazil">
+                </div>
+                <div class="score-box">1 - 1</div>
+                <div class="team away" onclick="localStorage.setItem('selectedTeam', 'Morocco'); loadPage('doihinh');" style="cursor: pointer;">
+                    <img class="team-flag" src="https://flagcdn.com/w40/ma.png" alt="Morocco">
+                    <span class="team-name">Morocco</span>
+                </div>
+            </div>
+            <div class="match-tv">VTV5, HTV Thể thao</div>
+        </li>
+        <!-- Trận 3 -->
+        <li class="match-item">
+            <div class="match-info">
+                <div class="match-time">08:00</div>
+                <div class="match-group">Bảng C</div>
+            </div>
+            <div class="match-vs">
+                <!-- Khi click vào đội sẽ lưu tên đội vào localStorage và gọi loadPage('doihinh') -->
+                <div class="team home" onclick="localStorage.setItem('selectedTeam', 'Haiti'); loadPage('doihinh');" style="cursor: pointer;">
+                    <span class="team-name">Haiti</span>
+                    <img class="team-flag" src="https://flagcdn.com/w40/ht.png" alt="Haiti">
+                </div>
+                <div class="score-box">0 - 1</div>
+                <div class="team away" onclick="localStorage.setItem('selectedTeam', 'Scotland'); loadPage('doihinh');" style="cursor: pointer;">
+                    <img class="team-flag" src="https://flagcdn.com/w40/gb-sct.png" alt="Scotland">
+                    <span class="team-name">Scotland</span>
+                </div>
+            </div>
+            <div class="match-tv">VTV5, HTV Thể thao</div>
+        </li>
+
+        <!-- Trận 4 -->
+        <li class="match-item">
+            <div class="match-info">
+                <div class="match-time">11:00</div>
+                <div class="match-group">Bảng D</div>
+            </div>
+            <div class="match-vs">
+                <!-- Khi click vào đội sẽ lưu tên đội vào localStorage và gọi loadPage('doihinh') -->
+                <div class="team home" onclick="localStorage.setItem('selectedTeam', 'Australia'); loadPage('doihinh');" style="cursor: pointer;">
+                    <span class="team-name">Australia</span>
+                    <img class="team-flag" src="https://flagcdn.com/w40/au.png" alt="Australia">
+                </div>
+                <div class="score-box">2 - 0</div>
+                <div class="team away" onclick="localStorage.setItem('selectedTeam', 'Thổ Nhĩ Kỳ'); loadPage('doihinh');" style="cursor: pointer;">
+                    <img class="team-flag" src="https://flagcdn.com/w40/tr.png" alt="Thổ Nhĩ Kỳ">
+                    <span class="team-name">Thổ Nhĩ Kỳ</span>
+                </div>
+            </div>
+            <div class="match-tv">VTV5, HTV Thể thao</div>
+        </li>
+</div>
+</div>
+
+</body>
+</html>

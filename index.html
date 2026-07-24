@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Cup 2026</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav>
+    <div class="logo">
+        <a href="#" onclick="loadPage('home')">World Cup 2026</a>
+    </div>
+
+    <ul class="menu">
+        <li><a href="#" onclick="loadPage('home')">Home</a></li>
+        <!-- Sửa lại link để khớp với hàm JS tải trang -->
+        <li><a href="#" onclick="loadPage('tintuc'); return false;">Tin tức</a></li>
+        <li><a href="#" onclick="loadPage('doihinh');return false;">Đội hình</a></li>
+        <li><a href="#" onclick="loadPage('lichthidau');return false;">Lịch thi đấu</a></li>
+        <li><a href="#" onclick="loadPage('phantich');return false;">Phân tích</a></li>
+        <li><a href="#" onclick="loadPage('cauthu');return false;">Cầu thủ</a></li>
+        <li><a href="#" onclick="loadPage('lienhe');return false;">Liên hệ</a></li>
+    </ul>
+</nav>
+
+<!-- Khung chứa nội dung động sẽ được gọi bằng fetch API -->
+<div id="content"></div>
+
+<footer class="footer-area">
+        <div class="footer-top">
+            <div class="footer-col">
+                <h3 class="footer-logo">World Cup 2026</h3>
+                <p>Trang thông tin điện tử cập nhật nhanh nhất, chính xác nhất về giải vô địch bóng đá thế giới 2026 diễn ra tại Mỹ, Canada và Mexico.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Liên kết nhanh</h4>
+                <ul>
+                    <li><a href="#" onclick="loadPage('home')">Trang chủ</a></li>
+                    <li><a href="#" onclick="loadPage('tintuc')">Tin tức & Sự kiện</a></li>
+                    <li><a href="#" onclick="loadPage('lichthidau')">Lịch thi đấu</a></li>
+                    <li><a href="#" onclick="loadPage('doihinh')">Đội hình các nước</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Hỗ trợ & Dịch vụ</h4>
+                <ul>
+                    <li><a href="#">Điều khoản sử dụng</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#" onclick="loadPage('lienhe')">Liên hệ quảng cáo</a></li>
+                    <li><a href="#" onclick="loadPage('lienhe')">Góp ý báo lỗi</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Theo dõi chúng tôi</h4>
+                <div class="footer-social">
+                    <a href="#">Facebook</a>
+                    <a href="#">Youtube</a>
+                    <a href="#">Tiktok</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 World Cup News. Bản quyền thuộc về Nhóm của bạn. Thiết kế và phát triển bởi [Tên của bạn].</p>
+        </div>
+    </footer>
+
+<script src="js/main.js"></script>
+<script src="js/tintuc.js"></script>
+<script src="js/doihinh.js"></script>
+</body>
+</html>
