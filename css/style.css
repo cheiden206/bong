@@ -411,7 +411,8 @@ header, nav {
         flex: 1 !important;
         width: auto !important;
         padding: 0 !important;
-        display: flex !direction: column !important;
+        display: flex !important;
+        flex-direction: column !important;
         justify-content: center !important;
         overflow: hidden !important;
     }
@@ -425,6 +426,7 @@ header, nav {
         margin-bottom: 4px !important;
         display: -webkit-box !important;
         -webkit-line-clamp: 2 !important; /* Giới hạn tối đa 2 dòng tiêu đề */
+        line-clamp: 2 !important;
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
     }
@@ -437,6 +439,7 @@ header, nav {
         margin: 0 !important;
         display: -webkit-box !important;
         -webkit-line-clamp: 1 !important; /* Ẩn bớt đoạn văn dài, giữ lại 1 dòng */
+        line-clamp: 1 !important;
         -webkit-box-orient: vertical !important;
         overflow: hidden !important;
     }
