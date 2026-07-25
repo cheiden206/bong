@@ -1,6 +1,4 @@
-// =========================================================================
 // DỮ LIỆU MẪU CÁC ĐỘI BÓNG VÀ CẦU THỦ (Lưu tại js/doihinh.js)
-// =========================================================================
 
 const allTeamsData = [
     { id: "mexico", name: "Mexico", logo: "https://flagcdn.com/w40/mx.png", coach: "Jaime Lozano", formation: "4-3-3" },
@@ -865,9 +863,7 @@ const individualPlayersProfile = {
 
 let currentSelectedTeamId = ""; // Biến lưu đội bóng đang xem hiện tại
 
-// =========================================================================
 // PHẦN 1: CÁC HÀM XỬ LÝ CHO TRANG ĐỘI HÌNH (SQUAD)
-// =========================================================================
 
 // Hàm tải danh sách toàn bộ đội bóng
 function loadSquad() {

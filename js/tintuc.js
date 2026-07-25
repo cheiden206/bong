@@ -1,12 +1,9 @@
-// =========================================================
 // QUẢN LÝ DỮ LIỆU & LOGIC TIN TỨC (Lưu tại js/tintuc.js)
-// =========================================================
 
 // Kho dữ liệu tin tức tổng hợp
 const newsData = {
     1: {
             title: "Na Uy trở lại World Cup sau 28 năm",
-            // Chỉ giữ lại một ảnh đại diện nhỏ (thumbnail) nếu cần, hoặc bỏ qua vì ta sẽ chèn ảnh trực tiếp trong phần content
             image: "img/nauy1.webp", 
             content: `
                 <p>Sau gần ba thập kỷ chờ đợi, đội tuyển Na Uy đã chính thức giành vé tham dự FIFA World Cup 2026. Đây được xem là một trong những cột mốc đáng nhớ nhất của bóng đá Na Uy trong nhiều năm qua.</p>
@@ -60,7 +57,6 @@ const newsData = {
                 <p>Thay vì 8 bảng như trước, giải đấu sẽ có 12 bảng đấu (mỗi bảng 4 đội). Hai đội đứng đầu mỗi bảng cùng với 8 đội xếp thứ 3 có thành tích tốt nhất sẽ giành vé bước vào vòng knock-out 32 đội. Thể thức mới này hứa hẹn số lượng trận đấu cực khủng lên đến 104 trận, kịch tính và cơ hội sửa sai nhiều hơn cho các đội bóng.</p>
             `
         }
-    // Bạn có thể thêm các tin tiếp theo ("tin-2", "tin-3"...) vào đây
 };
 
 // Hàm đổ dữ liệu bài viết chi tiết vào trang chitiettintuc.html
